@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body th:object="${recipe}">
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="/img/core-img/salad.png" alt="">
+    </div>
+
+    <!-- Search Wrapper -->
+    <th:block th:include="~{fragments/searchwrapper}"></th:block>
+
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+
+        <th:block th:include="~{fragments/topHeaderArea}"></th:block>
+        <!-- Top Header Area  END -->
+
+
+        <!-- Navbar Area -->
+        <th:block th:include="~{fragments/navbar}"></th:block>
+        <!-- Navbar Area END -->
+
+
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/bg-img/breadcumb3.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-text text-center">
+                        <h2 th:text="*{name}">Recipe</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <div class="receipe-post-area section-padding-80">
+
+        <!-- Receipe Post Search -->
+
+
+        <!-- Receipe Slider -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="receipe-slider owl-carousel">
+                        <img class="rec-details-img" th:src="*{imageUrl}" alt="">
+                        <img class="rec-details-img" src="/img/bg-img/vsichkoivseki.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Receipe Content Area -->
+        <div class="receipe-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div th:each="re : ${recipe.postTime}" class="receipe-headline my-5">
+                            <span th:text="|Качена на: ${#dates.format(re, 'dd-MMM-yyyy')}|"></span>
+                            <h2 th:text="*{name}">Vegetarian cheese salad</h2>
+                            <div class="receipe-duration">
+                                <h6>Prep: 15 mins</h6>
+                                <h6>Cook: 30 mins</h6>
+                                <h6 th:text="|Category: *{categoryName}|">Yields: 4 Servings</h6>
+                                <h6>Yields: 4 Servings</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="receipe-ratings text-right my-5">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="btn delicious-btn">For Begginers</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- Single Preparation Step -->
+                        <h3 >Начин на приготвяне </h3>
+
+                        <div class="single-preparation-step d-flex mt-5">
+                            <h6 th:text="*{description}"> </h6>
+                        </div>
+                    </div>
+
+                    <!-- Ingredients -->
+                    <div class="col-12 col-lg-4">
+                        <div  class="ingredients">
+                            <h4>Продукти</h4>
+
+                            <!-- Custom Checkbox -->
+                            <div th:each="produkt : ${#strings.arraySplit(recipe.products, ',')}" class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" th:id="${produkt}">
+                                <label class="custom-control-label" th:for="${produkt}" th:text="${produkt}">4 Tbsp (57 gr) butter</label>
+                            </div>
+
+<!--                            &lt;!&ndash; Custom Checkbox &ndash;&gt;-->
+<!--                            <div class="custom-control custom-checkbox">-->
+<!--                                <input type="checkbox" class="custom-control-input" id="customCheck2">-->
+<!--                                <label class="custom-control-label" for="customCheck2">2 large eggs</label>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Custom Checkbox &ndash;&gt;-->
+<!--                            <div class="custom-control custom-checkbox">-->
+<!--                                <input type="checkbox" class="custom-control-input" id="customCheck3">-->
+<!--                                <label class="custom-control-label" for="customCheck3">2 yogurt containers granulated sugar</label>-->
+<!--                            </div>-->
+
+
+
+                        </div>
+                    </div>
+
+                    <th:block sec:authorize="hasAuthority('ADMIN')">
+                        <div class="text-center">
+                            <a th:href="@{/recipes/delete/{id}(id=${recipeID})}" class="btn btn-danger">Delete</a>
+                            <a th:href="@{/recipes/recipe-edit/{id}(id=${recipeID})}" class="btn btn-success">Edit</a>
+                        </div>
+
+                        <br>
+                    </th:block>
+                    <form class="form w-15 mx-auto text-center" th:action="@{/saved/save/{id}(id=${recipeID})}"
+                          method="post">
+                        <div>
+                            <button class="btn btn-info" th:text="Save"></button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Follow Us Instagram Area Start ##### -->
+    <th:block th:include="~{fragments/instagramArea}"></th:block>
+    <!-- ##### Follow Us Instagram Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <th:block th:include="~{fragments/footer}"></th:block>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+   <th:block th:include="~{fragments/jsFiles}"></th:block>
+</body>
+
+</html>

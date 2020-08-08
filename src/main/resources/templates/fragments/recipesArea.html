@@ -1,0 +1,24 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+    <!-- ##### Top Catagory Area Start ##### -->
+    <section class="top-catagory-area section-padding-80-0">
+        <div class="container">
+            <div class="row">
+                <!-- Top Catagory Area -->
+                <div th:each="r :${recipes}" th:object="${r}" class="col-12 col-lg-6">
+                    <div class="single-top-catagory">
+                        <img class="all-img" th:src="${r.getImageUrl()}"  alt="">
+                        <!-- Content -->
+                        <div class="top-cta-content">
+                            <h3 th:text="${r.name}">Strawberry Cake</h3>
+                            <h6 th:text="|Публикувал: ${r.uploader.username}|">Simple &amp; Delicios</h6>
+                            <a th:href="@{/recipes/recipe-details/{id}(id=${r.id})}" class="btn delicious-btn">See Full Recipe</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</th:block>
