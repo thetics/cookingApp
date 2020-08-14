@@ -24,7 +24,7 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     @NonNull
     @NotNull
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Role> getAuthorities() {
         return authorities;
     }

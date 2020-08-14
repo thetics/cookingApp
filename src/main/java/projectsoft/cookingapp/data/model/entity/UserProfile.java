@@ -7,28 +7,58 @@ import lombok.Setter;
 import javax.persistence.*;
 
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "user_profile")
 public class UserProfile extends BaseEntity {
 
-    @Column
     private String firstName;
-
-    @Column
     private String lastName;
+    private String imgUrl;
+    private User user;
+
+    public UserProfile() {
+    }
+
+
 
     @Column
-    private String imgUrl;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Column
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Column
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "users_id",
             referencedColumnName = "id"
     )
-    private User user;
+    public User getUser() {
+        return user;
+    }
 
-
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

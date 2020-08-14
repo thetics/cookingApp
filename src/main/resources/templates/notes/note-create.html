@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <i class="circle-preloader"></i>
+    <img src="/img/core-img/salad.png" alt="">
+</div>
+
+<!-- Search Wrapper -->
+<th:block th:include="~{fragments/searchwrapper}"></th:block>
+
+
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Top Header Area -->
+
+    <th:block th:include="~{fragments/topHeaderArea}"></th:block>
+    <!-- Top Header Area  END -->
+
+
+    <!-- Navbar Area -->
+    <th:block th:include="~{fragments/navbar}"></th:block>
+    <!-- Navbar Area END -->
+
+
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/cust-img/magi.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-text text-center">
+                    <!--                        <h2>Post Recipe</h2>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<div class="receipe-post-area section-padding-80">
+
+
+    <!-- Receipe Content Area -->
+    <div class="receipe-content-area">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h3>Създай Нова Бележка</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-form-area">
+                        <form th:action="@{/notes/create}" method="post">
+                            <div class="row">
+
+                                <div class="col-12 mb-15">
+                                    <label for="title" class="h6 mb-2">Заглавие<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="title"
+                                           id="title" placeholder="Заглавие">
+                                </div>
+
+                                <div class="col-12 mt-15">
+                                    <label for="description" class="h6 mb-2">Бележка<span
+                                            class="text-danger">*</span></label>
+                                    <textarea name="description"
+                                              class="form-control" id="description" cols="20" rows="10"
+                                              placeholder="Бележка"></textarea>
+
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn delicious-btn mt-30 " type="submit">Създай Бележка</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Receipe Slider -->
+    <div class="container mt-100">
+        <div class="row">
+            <div class="col-12">
+                <div class="receipe-slider owl-carousel">
+                    <img src="/img/cust-img/slider2.jpg" alt="">
+                    <img src="/img/cust-img/slider1.jpg" alt="">
+                    <!--                        <img src="/img/bg-img/bg5.jpg" alt="">-->
+                    <!--                        <img src="/img/cust-img/slider1.jpg" alt="">-->
+                    <!--                        <img src="/img/cust-img/slider2.jpg" alt="">-->
+                    <!--                        <img src="/img/cust-img/slider3.jpg" alt="">-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ##### Follow Us Instagram Area Start ##### -->
+<th:block th:include="~{fragments/instagramArea}"></th:block>
+<!-- ##### Follow Us Instagram Area End ##### -->
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+<!-- ##### Footer Area Start ##### -->
+
+<!-- ##### All Javascript Files ##### -->
+<!-- jQuery-2.2.4 js -->
+<th:block th:include="~{fragments/jsFiles}"></th:block>
+</body>
+
+</html>

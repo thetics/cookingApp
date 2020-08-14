@@ -50,30 +50,14 @@
                                     <li class="active"><a th:href="@{/home}">Home</a></li>
                                     <li><a href="#">Profile</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="blog-post.html">Blog Post</a></li>
-                                            <li><a href="receipe-post.html">Receipe Post</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                            <li><a href="#">Dropdown</a>
+                                            <li><a  th:href="@{/users/profile}">Моят Профил</a></li>
+                                            <li><a  th:href="@{/users/edit}">Промени профил</a></li>
+                                            <li><a  th:href="@{/users/all-users}">Всички юзъри</a></li>
+                                            <li><a href="#">Бележки</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="blog-post.html">Blog Post</a></li>
-                                                    <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="#">Dropdown</a>
-                                                        <ul class="dropdown">
-                                                            <li><a href="index.html">Home</a></li>
-                                                            <li><a href="about.html">About Us</a></li>
-                                                            <li><a href="blog-post.html">Blog Post</a></li>
-                                                            <li><a href="receipe-post.html">Receipe Post</a></li>
-                                                            <li><a href="contact.html">Contact</a></li>
-                                                            <li><a href="elements.html">Elements</a></li>
-                                                        </ul>
-                                                    </li>
+                                                    <li><a th:href="@{/notes/create}">Създай Бележка</a></li>
+                                                    <li><a th:href="@{/notes/all}">Всички Бележки</a></li>
+
                                                 </ul>
                                             </li>
                                         </ul>
@@ -82,11 +66,11 @@
                                         <div class="megamenu align-items-center">
                                             <ul    class="single-mega cn-col-4 ">
                                                 <li  class="title">Recipe Categories</li>
-                                                <li><a href="/saved/all">My Saved Recipes</a></li>
+                                                <li><a th:href="@{/recipes/all-recipes}">Всички Рецепти</a></li>
+                                                <li><a href="/saved/all">Моите Запазени Рецепти</a></li>
+                                                <li><a th:href="@{/recipes/recipe-post}">Напиши Нова Рецепта</a></li>
+
                                                 <li><a th:each="c :${cats}" th:text="${c.categoryName}" th:href="@{/recipes/recipe-details}">Category 1</a></li>
-<!--                                                <li><a href="about.html">Category 2</a></li>-->
-<!--                                                <li><a href="blog-post.html">Category 3</a></li>-->
-<!--                                                <li><a href="receipe-post.html">Category 4</a></li>-->
                                             </ul>
                                             <div class="single-mega cn-col-4">
                                                 <div class="receipe-slider owl-carousel">
@@ -98,9 +82,9 @@
                                     </li>
                                     <li><a th:href="@{/recipes/recipe-post}">Post Recipe</a></li>
                                     <li ><a th:href="@{/about}">About Us</a></li>
-                                    <th:block sec:authorize="hasAuthority('ADMIN')">
-                                        <li><a href="contact.html">ADMINCHE</a></li>
-                                    </th:block>
+<!--                                    <th:block sec:authorize="hasAuthority('ADMIN')">-->
+<!--                                        <li><a href="#">ADMIN</a></li>-->
+<!--                                    </th:block>-->
                                     <!--                                    <li><a href="contact.html">Contact</a></li>-->
                                     <li><a th:href="@{/logout}">Logout</a></li>
 

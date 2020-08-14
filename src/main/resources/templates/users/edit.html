@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <i class="circle-preloader"></i>
+    <img src="/img/core-img/salad.png" alt="">
+</div>
+
+<!-- Search Wrapper -->
+<th:block th:include="~{fragments/searchwrapper}"></th:block>
+
+
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Top Header Area -->
+
+    <th:block th:include="~{fragments/topHeaderArea}"></th:block>
+    <!-- Top Header Area  END -->
+
+
+    <!-- Navbar Area -->
+    <th:block th:include="~{fragments/navbar}"></th:block>
+    <!-- Navbar Area END -->
+
+
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/cust-img/noteedit.png)">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-text text-center">
+                    <!--                        <h2>Post Recipe</h2>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<div class="receipe-post-area section-padding-80">
+
+
+    <!-- Receipe Content Area -->
+    <div class="receipe-content-area">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h3>Промени Профил</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div th:object="${user}" class="row">
+                <div class="col-12">
+                    <div class="contact-form-area">
+                        <form th:action="@{/users/edit}" method="post" enctype="multipart/form-data">
+                            <div class="row">
+
+                                <div class="col-12 mb-15 ">
+                                    <label for="image" class="h6 mb-2">Добави Снимка<span
+                                            class="text-danger">*</span></label>
+                                    <input  type="file"
+                                            class="form-control" id="image" name="image"  >
+                                    <!--                                    th:value="*{imageUrl}"-->
+                                    <!--                                    <small th:each="e : ${#fields.errors('image')}" th:text="${e}" class="text-danger"></small>-->
+                                </div>
+                                <div class="col-12 mb-15">
+                                    <label for="firstName" class="h6 mb-2">firstName<span
+                                            class="text-danger">*</span></label>
+                                    <input th:value="*{firstName}" type="text" class="form-control" name="firstName"
+                                           id="firstName" placeholder="firstName">
+                                </div>
+                                <div class="col-12 mb-15">
+                                    <label for="lastName" class="h6 mb-2">lastName<span
+                                            class="text-danger">*</span></label>
+                                    <input th:value="*{lastName}" type="text" class="form-control" name="lastName"
+                                           id="lastName" placeholder="lastName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="changePassword" class="font-weight-bold">Change Password</label>
+                                    <input type="password" class="form-control" id="changePassword" name="password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword" class="font-weight-bold">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <button class="btn delicious-btn mt-30 " type="submit">Запиши промените</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Receipe Slider -->
+    <div class="container mt-100">
+        <div class="row">
+            <div class="col-12">
+                <div class="receipe-slider owl-carousel">
+                    <img src="/img/cust-img/slider2.jpg" alt="">
+                    <img src="/img/cust-img/slider1.jpg" alt="">
+                    <!--                        <img src="/img/bg-img/bg5.jpg" alt="">-->
+                    <!--                        <img src="/img/cust-img/slider1.jpg" alt="">-->
+                    <!--                        <img src="/img/cust-img/slider2.jpg" alt="">-->
+                    <!--                        <img src="/img/cust-img/slider3.jpg" alt="">-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ##### Follow Us Instagram Area Start ##### -->
+<th:block th:include="~{fragments/instagramArea}"></th:block>
+<!-- ##### Follow Us Instagram Area End ##### -->
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+<!-- ##### Footer Area Start ##### -->
+
+<!-- ##### All Javascript Files ##### -->
+<!-- jQuery-2.2.4 js -->
+<th:block th:include="~{fragments/jsFiles}"></th:block>
+</body>
+
+</html>

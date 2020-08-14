@@ -1,29 +1,30 @@
-package projectsoft.cookingapp.data.service.models;
+package projectsoft.cookingapp.data.model.view;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import projectsoft.cookingapp.data.model.entity.Role;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Set;
 
-public class UserServiceModel  extends BaseServiceModel{
+public class UserAllViewModel {
 
+    private String id;
     private String username;
     private String password;
     private String email;
     private String firstName;
     private String lastName;
     private String imageUrl;
-    private Set<RoleServiceModel> authorities;
 
-    public UserServiceModel() {
+    private Set<String> authorities;
+
+    public UserAllViewModel() {
     }
 
-    @NotEmpty(message = "Username name cannot be empty")
-    @Size(min = 2, max = 30, message = "Username should be between 2 and 30")
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -32,7 +33,6 @@ public class UserServiceModel  extends BaseServiceModel{
         this.username = username;
     }
 
-    @NotEmpty(message = "Password cannot be empty")
     public String getPassword() {
         return password;
     }
@@ -40,7 +40,7 @@ public class UserServiceModel  extends BaseServiceModel{
     public void setPassword(String password) {
         this.password = password;
     }
-    @NotEmpty(message = "Email cannot be empty")
+
     public String getEmail() {
         return email;
     }
@@ -73,11 +73,11 @@ public class UserServiceModel  extends BaseServiceModel{
         this.imageUrl = imageUrl;
     }
 
-    public Set<RoleServiceModel> getAuthorities() {
+    public Set<String> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<RoleServiceModel> authorities) {
+    public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
     }
 }

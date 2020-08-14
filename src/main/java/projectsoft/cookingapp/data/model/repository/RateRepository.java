@@ -11,9 +11,11 @@ import java.util.List;
 public interface RateRepository extends JpaRepository<Rate,String> {
     Rate findByIdAndUserContains(String id, User user);
 
-//    Rate findByPost_idContains(String id);
+
+
+    Rate findByRecipe_idContains(String id);
 
 //    Rate findByPost(Post post);
 
-//    List<Rate> findAllByUser_IdContains(String id);
+    List<Rate> findAllByUser_IdContains(String id);
 }

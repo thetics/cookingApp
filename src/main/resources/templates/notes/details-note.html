@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body th:object="${note}">
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="/img/core-img/salad.png" alt="">
+    </div>
+
+    <!-- Search Wrapper -->
+    <th:block th:include="~{fragments/searchwrapper}"></th:block>
+
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+
+        <th:block th:include="~{fragments/topHeaderArea}"></th:block>
+        <!-- Top Header Area  END -->
+
+
+        <!-- Navbar Area -->
+        <th:block th:include="~{fragments/navbar}"></th:block>
+        <!-- Navbar Area END -->
+
+
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/cust-img/notesdetails.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-text text-center">
+                        <h2 th:text="*{title}">Recipe</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <div class="receipe-post-area section-padding-80">
+
+        <!-- Receipe Post Search -->
+
+
+
+
+        <!-- Receipe Content Area -->
+        <div class="receipe-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div th:each="re : ${note.createTime}" class="receipe-headline my-5">
+                            <span th:text="|Написа на на: ${#dates.format(re, 'dd-MMM-yyyy')}|"></span>
+                            <h2 th:text="*{title}">Vegetarian cheese salad</h2>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- Single Preparation Step -->
+<!--                        <h3 >Начин на приготвяне </h3>-->
+
+                        <div class="single-preparation-step d-flex mt-5">
+                            <h6 th:text="*{description}"> </h6>
+                        </div>
+                    </div>
+
+                    <!-- Ingredients -->
+
+
+                    <th:block sec:authorize="hasAuthority('ADMIN')">
+                        <div class="text-center">
+                            <a th:href="@{/notes/delete/{id}(id=${noteId})}" class="btn btn-danger">Delete</a>
+                            <a th:href="@{/notes/edit/{id}(id=${noteId})}" class="btn btn-success">Edit</a>
+                        </div>
+
+                        <br>
+                    </th:block>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Follow Us Instagram Area Start ##### -->
+    <th:block th:include="~{fragments/instagramArea}"></th:block>
+    <!-- ##### Follow Us Instagram Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <th:block th:include="~{fragments/footer}"></th:block>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+   <th:block th:include="~{fragments/jsFiles}"></th:block>
+</body>
+
+</html>

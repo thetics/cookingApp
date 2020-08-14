@@ -13,32 +13,73 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-@Getter
-@Setter
-@NoArgsConstructor
+
 
 public class RecipeAddBindingModel {
 
-    @NotEmpty(message = "Recipe name cannot be empty")
-    @Size(min = 2, max = 30, message = "Recipe should be between 2 and 30")
+
     private String name;
-
-
-    @NotNull(message = "Image cannot be empty")
     private MultipartFile image;
-
-
-    @NotEmpty(message = "Products cannot be empty")
-    @Size(min = 10, message = "Recipe should be min 10")
     private String products;
-
-
-    @NotEmpty(message = "Description cannot be empty")
-    @Size(min = 10, message = "Description should be min 10")
     private String description;
     private Date postTime;
     private CategoryName category;
 
+    public RecipeAddBindingModel() {
+    }
 
+    @NotEmpty(message = "Recipe name cannot be empty")
+    @Size(min = 2, max = 30, message = "Recipe should be between 2 and 30")
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @NotNull(message = "Image cannot be empty")
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
+
+    @NotEmpty(message = "Products cannot be empty")
+    @Size(min = 10, message = "Recipe should be min 10")
+    public String getProducts() {
+        return products;
+    }
+
+    public void setProducts(String products) {
+        this.products = products;
+    }
+
+    @NotEmpty(message = "Description cannot be empty")
+    @Size(min = 10, message = "Description should be min 10")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
+    }
+
+    public CategoryName getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryName category) {
+        this.category = category;
+    }
 }

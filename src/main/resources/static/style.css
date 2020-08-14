@@ -1417,3 +1417,8 @@ textarea:focus {
   height: 249px;
   object-fit: cover;
 }
+.profile-img{
+  width:290px;
+  height: 350px;
+  object-fit: cover;
+}

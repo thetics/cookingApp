@@ -1,0 +1,49 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+    <!-- ##### Top Catagory Area Start ##### -->
+    <section  class="top-catagory-area section-padding-80-0 ">
+        <th:block th:if="${notes.isEmpty()}">
+            <section class="cta-area bg-img bg-overlay mb-50" style="background-image: url(/img/bg-img/bg4.jpg);">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <!-- Cta Content -->
+                            <div class="cta-content text-center">
+                                <h2>В момента все още нямате запазени бележки!</h2>
+<!--                                <p>Fusce nec ante vitae lacus aliquet vulputate. Donec scelerisque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras sed accumsan neque. Ut vulputate, lectus vel aliquam congue, risus leo elementum nibh</p>-->
+                                <a th:href="@{/notes/create}"class="btn delicious-btn">Напишете първата си бележка тук.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </th:block>
+
+        <div class="container">
+            <div th:each="r :${notes}" class="row">
+                <!-- Top Catagory Area -->
+                <div  th:object="${r}" class="col-12 col-lg-6">
+                    <div class="single-top-catagory">
+                        <img class="all-img" src="/img/cust-img/notesdetails.jpg"  alt="">
+                        <!-- Content -->
+                        <div class="top-cta-content">
+                            <h3 th:text="${r.title}">Strawberry Cake</h3>
+                            <h6 th:text="|Публикувал: ${r.user.username}|">Simple &amp; Delicios</h6>
+                            <a th:href="@{/notes/details/{id}(id=${r.id})}" class="btn delicious-btn">Виж Бележка</a>
+                        </div>
+                    </div>
+                </div>
+                <td class="col-md-2 text-center mb-30 ">
+                    <form class="form w-15 mx-auto text-center" th:action="@{/notes/delete/{id}(id=${r.id})}"
+                          method="post">
+                        <div>
+                            <button class="btn btn-danger" th:text="Delete"></button>
+                        </div>
+                    </form>
+                </td>
+            </div>
+        </div>
+
+    </section>
+
+</th:block>

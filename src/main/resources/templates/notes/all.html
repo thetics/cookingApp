@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="/img/core-img/salad.png" alt="">
+    </div>
+
+    <!-- Search Wrapper -->
+    <th:block th:include="~{fragments/searchwrapper}"></th:block>
+
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+        <th:block th:include="~{fragments/topHeaderArea}"></th:block>
+        <!-- Top Header Area END -->
+
+        <!-- Navbar Area -->
+        <th:block th:include="~{fragments/navbar}"></th:block>
+        <!-- Navbar Area END -->
+
+    </header>
+    <!-- ##### Header Area End ##### -->
+    
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/cust-img/notes.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-text text-center">
+                        <h2>Моите Бележки</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Breadcumb Area End ##### -->
+
+<!--ALL RECIPES DOWN BELOW START-->
+    <th:block th:include="~{fragments/saved-notes}"></th:block>
+    <!--ALL RECIPES DOWN BELOW END-->
+
+
+    <!-- ##### Follow Us Instagram Area Start ##### -->
+    <th:block th:include="~{fragments/instagramArea}"></th:block>
+    <!-- ##### Follow Us Instagram Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <th:block th:include="~{fragments/footer}"></th:block>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <th:block th:include="~{fragments/jsFiles}"></th:block>
+</body>
+
+</html>

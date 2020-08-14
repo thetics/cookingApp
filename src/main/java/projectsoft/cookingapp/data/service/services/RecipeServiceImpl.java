@@ -84,7 +84,7 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe recipe = this.recipeRepository.findById(id)
                 .orElseThrow(() -> new PostNotFoundException("Recipe with the given id was not found"));
 
-        recipe.setName(recipe.getName());
+        recipe.setName(recipeServiceModel.getName());
 
         if (recipeServiceModel.getImageUrl().contains("org.springframework.web.multipart.support.StandardMultipartHttpServletRequest")){
             recipeServiceModel.setImageUrl(null);
